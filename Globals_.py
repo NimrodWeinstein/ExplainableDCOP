@@ -4,19 +4,20 @@ from enums import *
 from random import Random
 import pandas as pd
 
-import networkx as nx
-import matplotlib.pyplot as plt
+#import networkx as nx
+#import matplotlib.pyplot as plt
 import os
 
 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz-10.0.1-win64/bin'
 from itertools import chain
 
-import graphviz
+#import graphviz
 
 is_complete = None
 repetitions = 1
 incomplete_iterations = 1000
+my_inf = 1000
 
 #### DCOPS_INPUT ####
 #*******************************************#
@@ -47,7 +48,7 @@ dense_max_cost = 100
 
 def dense_random_uniform_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):
     if rnd_cost.random()<dense_p2:
-        return rnd_cost.randint(sparse_min_cost, sparse_max_cost)
+        return rnd_cost.randint(dense_min_cost, dense_max_cost)
     else:
         return 0
 
@@ -81,14 +82,30 @@ def graph_coloring_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):
         return 0
 
 
+#*******************************************#
+# dcop_type = DcopType.meeting_scheduling
+#*******************************************#
+meetings = 4
+meetings_per_agent=2
+time_slots_D=3
 
 
+def meeting_scheduling_must_be_equal_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):
+    if d_a1==d_a2:
+        return 0
+    else:
+        return my_inf
 
 
+def meeting_scheduling_must_be_non_equal_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):
+    if d_a1==d_a2:
+        return my_inf
+    else:
+        return 0
 
 
-
-
+def meeting_scheduling_unary_constraint_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):
+    return a1.unary_constraint[d_a1]
 
 
 ######## dcop input ########
@@ -126,7 +143,6 @@ class Msg():
         self.receiver = receiver
         self.information = information
         self.msg_type = msg_type
-
 
 
 def draw_dfs_tree(dfs_nodes,dcop_id):

@@ -1,7 +1,7 @@
 import math
 from enum import Enum
 
-from Scripts._testmultiphase import Example
+#from Scripts._testmultiphase import Example
 
 import Globals_
 from Trees import *
@@ -637,32 +637,3 @@ class BranchAndBound(DFS,CompleteAlgorithm):
         if above_me_si not in self.records_dict.keys():
             self.records_dict[above_me_si] = []
         self.records_dict[above_me_si].append(si)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

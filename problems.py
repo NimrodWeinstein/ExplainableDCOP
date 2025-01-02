@@ -5,6 +5,8 @@ import Globals_
 from Algorithm_BnB import BranchAndBound
 from Agents import *
 from Globals_ import *
+from MGM import MGM
+
 
 from enums import *
 from abc import ABC, abstractmethod
@@ -168,7 +170,6 @@ class DCOP(ABC):
         self.A = A
         self.D = D
         self.algorithm = algorithm
-
         self.dcop_name = dcop_name
         self.agents = []
         self.create_agents()
@@ -187,6 +188,8 @@ class DCOP(ABC):
         for i in range(self.A):
             if self.algorithm == Algorithm.branch_and_bound:
                 self.agents.append(BranchAndBound(i + 1, self.D))
+            if self.algorithm == Algorithm.MGM:
+                self.agents.append(MGM(i + 1, self.D, self.dcop_id))
 
 
 
@@ -277,10 +280,6 @@ class DCOP(ABC):
         return ans
 
 
-
-
-
-
 class DCOP_RandomUniform(DCOP):
     def __init__(self, id_,A,D,dcop_name,algorithm):
         DCOP.__init__(self,id_,A,D,dcop_name,algorithm)
@@ -291,8 +290,9 @@ class DCOP_RandomUniform(DCOP):
             for j in range(i+1,self.A):
                 a2 = self.agents[j]
                 rnd_number = self.rnd_neighbors.random()
-                if rnd_number<sparse_p1:
-                    self.neighbors.append(Neighbors(a1, a2, sparse_random_uniform_cost_function, self.dcop_id))
+                if rnd_number<dense_p1:
+                    self.neighbors.append(Neighbors(a1, a2, dense_random_uniform_cost_function, self.dcop_id))
+
 
 class DCOP_GraphColoring(DCOP):
 

@@ -141,4 +141,8 @@ def calc_global_cost(dcop):
         a2_id, a2_variable = n.a2.id_, n.a2.variable
         _, constraint_cost = n.get_constraint((a1_id, a1_variable), (a2_id, a2_variable))
         global_cost += constraint_cost
+    if dcop.dcop_name=="Meeting Scheduling":
+        for meeting in dcop.agents:
+            meeting_assignment = meeting.variable
+            global_cost += meeting.unary_constraint[meeting_assignment]
     return global_cost
