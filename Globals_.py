@@ -85,9 +85,9 @@ def graph_coloring_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):
 #*******************************************#
 # dcop_type = DcopType.meeting_scheduling
 #*******************************************#
-meetings = 4
-meetings_per_agent=2
-time_slots_D=3
+meetings = 10
+meetings_per_agent=3
+time_slots_D=5
 
 
 def meeting_scheduling_must_be_equal_cost_function(rnd_cost:Random,a1,a2,d_a1,d_a2):

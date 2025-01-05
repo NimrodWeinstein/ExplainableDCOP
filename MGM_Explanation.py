@@ -250,7 +250,7 @@ class Meeting_Scheduling_Explanation(MGM_Explanation):
                 else:
                     total_satisfaction_trend = "remained the same"
 
-                for agent_id, time_slot_costs in meeting.individual_costs.items():
+                for agent_id, time_slot_costs in sorted(meeting.individual_costs.items()):
                     former_cost = time_slot_costs[meeting_former_assignment]
                     current_cost = time_slot_costs[meeting_assignment]
 
@@ -272,4 +272,4 @@ class Meeting_Scheduling_Explanation(MGM_Explanation):
                 else:
                     print(
                         f"        Total satisfaction of participants in Meeting_{meeting.id_} changed from {total_cost_before} to {total_cost_after} (lower is better).")
-                print(f"        The overall satisfaction trend for Meeting_{meeting.id_} is: {total_satisfaction_trend}.")
+                print(f"        The overall satisfaction trend for Meeting_{meeting.id_} is: {total_satisfaction_trend} .")
