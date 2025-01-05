@@ -230,4 +230,7 @@ class DCOP_MeetingScheduling(DCOP):
             constraints = ", ".join(f"Slot {slot}: {cost}" for slot, cost in agent.unary_constraint.items())
             story.append(f"  - Agent {agent.id_}: {constraints if constraints else 'No constraints defined'}")
 
+        story.append("\n-------------------------------------------------------------------------"
+                     "------------------------------------------")
+
         return "\n".join(story)
