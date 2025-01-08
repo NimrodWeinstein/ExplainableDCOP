@@ -1,5 +1,3 @@
-import copy
-
 from Meeting_Agent import Meeting
 from problems import *
 
@@ -41,8 +39,8 @@ class DCOP_MeetingScheduling(DCOP):
         # Find pairs of meetings with mutual participants
         self.meeting_neighbors = self.find_meeting_with_mutual_participants()
 
-        self.original_agents = copy.deepcopy(self.agents)
-        self.agents = [] # meeting agents
+        self.original_agents = self.agents
+        self.agents = []  # meeting agents
         self.create_meetings()
         self.neighbors = []
         self.create_meetings_neighbors()
