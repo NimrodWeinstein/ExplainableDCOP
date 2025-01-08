@@ -43,7 +43,7 @@ if __name__ == '__main__':
         First_Explanation.explain(informative=True)
 
 """
-Participants 2 and 3 are dissatisfied with the current scheduling. 
+Participants 2 and 6 are dissatisfied with the current scheduling. 
 They prefer that meeting 8 be scheduled much later (at 4:00 PM) instead of its current time (8:00 AM).
 Why is this not possible?"
 
