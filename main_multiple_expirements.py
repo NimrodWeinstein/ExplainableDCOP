@@ -43,8 +43,8 @@ if __name__ == '__main__':
         First_Explanation.explain(informative=True)
 
 """
-Participants 2 and 6 are dissatisfied with the current scheduling. 
-They prefer that meeting 8 be scheduled much later (at 4:00 PM) instead of its current time (8:00 AM).
+Participants 2 (or 6) is dissatisfied with the current scheduling. 
+He prefer that meeting 8 be scheduled much later (at 4:00 PM) instead of its current time (8:00 AM).
 Why is this not possible?"
 
 Assumption: The scheduling time frame is from 0 to 4, which corresponds to 8:00 AM to 4:00 PM in real life.
